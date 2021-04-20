@@ -1,4 +1,4 @@
-import nameQR from '../assets/nameQR.svg';
+import nameQR from '../assets/QR/nameQR.svg';
 
 function NameSection() {
   return (
