@@ -10,9 +10,14 @@ function CoinCard(props) {
 
   useEffect(() => {
     const canvas = document.getElementById(`coin-qr-code-${id}`);
-    QRCode.toCanvas(canvas, `${fullName}: ${price}`, (err) => {
-      if (err) console.error(err);
-    });
+    QRCode.toCanvas(
+      canvas,
+      `${fullName}: ${price}`,
+      { width: 100, height: 100 },
+      (err) => {
+        if (err) console.error(err);
+      }
+    );
   }, [fullName, id, price]);
 
   return (
