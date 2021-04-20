@@ -1,6 +1,13 @@
+import NameSection from './components/NameSection';
+import CryptoCurrencySection from './components/CryptoCurrencySection';
+import Footer from './components/Footer';
+
 function App() {
   return (
-    <div className="App">
+    <div>
+      <NameSection />
+      <CryptoCurrencySection />
+      <Footer />
     </div>
   );
 }
