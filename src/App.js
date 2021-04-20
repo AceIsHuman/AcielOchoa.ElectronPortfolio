@@ -2,6 +2,7 @@ import NameSection from './components/NameSection';
 import CoinSection from './components/CoinSection';
 import TwitterFeeds from './components/TwitterFeeds';
 import Footer from './components/Footer';
+import ScreenshotButton from './components/ScreenshotButton';
 
 function App() {
   return (
@@ -10,6 +11,7 @@ function App() {
       <CoinSection />
       <TwitterFeeds />
       <Footer />
+      <ScreenshotButton />
     </div>
   );
 }
