@@ -1,12 +1,12 @@
 import NameSection from './components/NameSection';
-import CryptoCurrencySection from './components/CryptoCurrencySection';
+import CoinSection from './components/CoinSection';
 import Footer from './components/Footer';
 
 function App() {
   return (
     <div>
       <NameSection />
-      <CryptoCurrencySection />
+      <CoinSection />
       <Footer />
     </div>
   );
