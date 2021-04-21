@@ -1,3 +1,5 @@
+import styled from 'styled-components';
+
 import { useState, useEffect } from 'react';
 import cmcRequest from '../utils/cmcAPI/cmcRequest';
 import CoinCard from './CoinCard';
@@ -29,13 +31,20 @@ function CryptoCurrencySection() {
   });
 
   return (
-    <div>
+    <Wrapper>
       {coin.length &&
         coin.map((c) => {
           return <CoinCard key={`coin-card-${c.id}`} coin={c} />;
         })}
-    </div>
+    </Wrapper>
   );
 }
+
+const Wrapper = styled.div`
+  padding-top: 2rem;
+  width: 95%;
+  display: flex;
+  justify-content: space-between;
+`
 
 export default CryptoCurrencySection;
