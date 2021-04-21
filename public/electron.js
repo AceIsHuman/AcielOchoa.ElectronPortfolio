@@ -1,5 +1,6 @@
-const { app, BrowserWindow } = require('electron');
+const { app, BrowserWindow, ipcMain } = require('electron');
 const path = require('path');
+const screenshot = require('./utils/screenshot');
 
 // Enable electron remote to communicate with render process
 require('@electron/remote/main').initialize();
@@ -43,3 +44,5 @@ app.on('activate', function () {
   // dock icon is clicked and there are no other windows open.
   if (BrowserWindow.getAllWindows().length === 0) createWindow();
 });
+
+ipcMain.on('screenshot', screenshot);
