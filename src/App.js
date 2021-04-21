@@ -4,18 +4,29 @@ import TwitterFeeds from './components/TwitterFeeds';
 import Footer from './components/Footer';
 import ScreenshotButton from './components/ScreenshotButton';
 
+// Styling imports
+import styled from 'styled-components';
+import palette from './assets/colorScheme';
 import './index.css';
 
 function App() {
   return (
-    <div>
+    <Wrapper>
       <NameSection />
       <CoinSection />
       <TwitterFeeds />
       <Footer />
       <ScreenshotButton />
-    </div>
+    </Wrapper>
   );
 }
+
+const Wrapper = styled.div`
+  background-color: ${palette.primary};
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+`;
 
 export default App;
