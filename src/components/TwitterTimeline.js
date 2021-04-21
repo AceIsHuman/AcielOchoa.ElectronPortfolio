@@ -6,7 +6,7 @@ function TwitterTimeline(props) {
     <div>
       <Timeline
         dataSource={{ sourceType: 'profile', screenName }}
-        options={{ width: 400, height: 600 }}
+        options={{ width: 500, height: 600 }}
       />
     </div>
   );
