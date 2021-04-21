@@ -1,10 +1,10 @@
-import nameQR from '../assets/QR/nameQR.svg';
+import QRCode from './QRCode';
 
 function NameSection() {
   return (
     <section>
       <h2>Aciel Ochoa</h2>
-      <img src={nameQR} width="100" alt="qr-code-aciel-ochoa"/>
+      <QRCode id="full-name" data="Aciel Ochoa" />
     </section>
   )
 }
