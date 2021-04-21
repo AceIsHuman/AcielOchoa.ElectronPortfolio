@@ -1,6 +1,12 @@
 {
   "name": "acielochoa.electronportfolio",
   "version": "0.1.0",
+  "description": "A fun project built using ElectronJS with the ReactJS framework!",
+  "author": "Aciel Ochoa",
+  "build": {
+    "appId": "AcielOchoa.ElectronPortfolio"
+  },
+  "homepage": "./",
   "private": true,
   "main": "main.js",
   "dependencies": {
