@@ -1,9 +1,11 @@
 import styled from 'styled-components';
 import palette from '../assets/colorScheme';
 
+const { ipcRenderer } = window.require('electron');
+
 function ScreenshotButton() {
   return (
-    <Button>
+    <Button onClick={e => initScreenshot(e)}>
       Take
       <br />
       Screenshot
@@ -25,5 +27,10 @@ const Button = styled.button`
     opacity: 1;
   }
 `
+
+function initScreenshot(e) {
+  e.preventDefault();
+  ipcRenderer.send('screenshot');
+}
 
 export default ScreenshotButton;
