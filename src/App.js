@@ -4,6 +4,8 @@ import TwitterFeeds from './components/TwitterFeeds';
 import Footer from './components/Footer';
 import ScreenshotButton from './components/ScreenshotButton';
 
+import './index.css';
+
 function App() {
   return (
     <div>
