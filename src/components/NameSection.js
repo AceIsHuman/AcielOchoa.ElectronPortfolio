@@ -15,6 +15,7 @@ const Name = styled.h2`
   color: ${palette.fontSecondary};
   text-decoration: underline;
   text-align: center;
+  margin-bottom: 0.5rem;
 `;
 
 export default NameSection;
