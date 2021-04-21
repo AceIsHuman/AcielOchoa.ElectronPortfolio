@@ -1,5 +1,9 @@
 import Link from './Link';
 
+// Styling imports
+import styled from 'styled-components';
+import palette from '../assets/colorScheme';
+
 function Footer() {
   const links = [
     { url: 'https://github.com/AceIsHuman', text: 'GitHub' },
@@ -14,13 +18,23 @@ function Footer() {
       text: 'Resume',
     },
   ];
+
   return (
-    <footer>
+    <Wrapper>
       {links.map((link) => (
-        <Link key={link.url} url={link.url} text={link.text} />
+        <Link key={link.url} url={link.url} text={link.text} color={palette.fontSecondary}/>
       ))}
-    </footer>
+    </Wrapper>
   );
 }
+
+const Wrapper = styled.footer`
+  background-color: ${palette.secondary};
+  width: 100%;
+  margin-top: 2rem;
+  padding: 2rem 2.5%;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+`
 
 export default Footer;
