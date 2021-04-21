@@ -18,7 +18,6 @@
     "electron:build": "yarn build && electron-builder -c.extraMetadata.main=build/main.js",
     "electron:start": "wait-on tcp:3000 && electron ."
   },
-  
   "eslintConfig": {
     "extends": [
       "react-app",
