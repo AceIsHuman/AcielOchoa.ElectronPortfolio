@@ -4,18 +4,25 @@
   "description": "A fun project built using ElectronJS with the ReactJS framework!",
   "author": "Aciel Ochoa",
   "build": {
-    "appId": "AcielOchoa.ElectronPortfolio"
+    "appId": "AcielOchoa.ElectronPortfolio",
+    "files": [
+      "build/**/*",
+      "node_modules/**/*"
+    ],
+    "directories": {
+      "buildResources": "assets"
+    }
   },
   "homepage": "./",
   "private": true,
-  "main": "main.js",
+  "main": "public/electron.js",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "electron:serve": "concurrently -k \"cross-env BROWSER=none yarn start\" \"yarn electron:start\"",
-    "electron:build": "yarn build && electron-builder -c.extraMetadata.main=build/main.js",
+    "electron:build": "yarn build && electron-builder -c.extraMetadata.main=build/electron.js",
     "electron:start": "wait-on tcp:3000 && electron ."
   },
   "eslintConfig": {
@@ -47,8 +54,7 @@
     "react-dom": "^17.0.2",
     "react-scripts": "4.0.3",
     "react-twitter-widgets": "^1.10.0",
-    "styled-components": "^5.2.3",
-    "web-vitals": "^1.0.1"
+    "styled-components": "^5.2.3"
   },
   "devDependencies": {
     "concurrently": "^6.0.2",
