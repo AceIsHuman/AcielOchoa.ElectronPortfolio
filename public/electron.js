@@ -1,9 +1,12 @@
 const { app, BrowserWindow, ipcMain } = require('electron');
 const path = require('path');
 const screenshot = require('./utils/screenshot');
+const cmcRequest = require('./utils/cmcRequest');
 
 // Enable electron remote to communicate with render process
 require('@electron/remote/main').initialize();
+
+require('dotenv').config({ path: path.resolve(__dirname, '../.env') });
 
 const isMacOS = process.platform === 'darwin';
 const isDev = !app.isPackaged;
@@ -46,3 +49,25 @@ app.on('activate', function () {
 });
 
 ipcMain.on('screenshot', screenshot);
+
+ipcMain.on('cmcRequest', (e, endpoint) => {
+  cmcRequest()
+    .get(endpoint)
+    .then((res) => {
+      let data = [];
+      for (let id in res.data.data) {
+        const coin = res.data.data[id];
+        // Extract required data and pass to ipcRenderer
+        data.push({
+          id: coin.id,
+          name: coin.name,
+          symbol: coin.symbol,
+          price: `$${coin.quote.USD.price.toFixed(5)}`,
+        });
+      }
+
+      // Return data to ipcRenderer
+      e.sender.send('cmcResponse', data);
+    })
+    .catch((err) => console.error(err.message));
+});
