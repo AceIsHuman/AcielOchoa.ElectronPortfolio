@@ -6,7 +6,6 @@ function QRCodeComponent(props) {
   const qrRef = useRef(null);
 
   useEffect(() => {
-    const canvas = document.getElementById(`qr-code-${data}`);
     createCode(data, qrRef.current);
   }, [data])
 
