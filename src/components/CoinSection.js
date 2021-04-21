@@ -1,8 +1,9 @@
+import { useState, useEffect } from 'react';
+import CoinCard from './CoinCard';
+
 import styled from 'styled-components';
 
-import { useState, useEffect } from 'react';
-import cmcRequest from '../utils/cmcAPI/cmcRequest';
-import CoinCard from './CoinCard';
+const { ipcRenderer } = window.require('electron');
 
 function CryptoCurrencySection() {
   const [coin, setCoin] = useState([]);
@@ -12,23 +13,14 @@ function CryptoCurrencySection() {
     const ids = [2011, 573, 2010];
 
     // Make CMC API request to retrive prices
-    cmcRequest()
-      .get(`/cryptocurrency/quotes/latest?id=${ids.join(',')}`)
-      .then((res) => {
-        let data = [];
-        for (let coin of res.data) {
-          data.push({
-            id: coin.id,
-            name: coin.name,
-            symbol: coin.symbol,
-            price: `$${coin.quote.USD.price.toFixed(5)}`,
-          });
-        }
-        // Store prices from retrieved data in state.
-        setCoin(data);
-      })
-      .catch((err) => console.error(err.message));
-  });
+    ipcRenderer.send(
+      'cmcRequest',
+      `/cryptocurrency/quotes/latest?id=${ids.join(',')}`
+    );
+    ipcRenderer.on('cmcResponse', (e, res) => {
+      setCoin(res);
+    });
+  }, []);
 
   return (
     <Wrapper>
@@ -45,6 +37,6 @@ const Wrapper = styled.div`
   width: 95%;
   display: flex;
   justify-content: space-between;
-`
+`;
 
 export default CryptoCurrencySection;
