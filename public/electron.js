@@ -1,37 +1,33 @@
 const { app, BrowserWindow } = require('electron');
 const path = require('path');
-const url = require('url');
-require('dotenv').config({ path: path.resolve(__dirname, './.env') });
+
+// Enable electron remote to communicate with render process
+require('@electron/remote/main').initialize();
 
 const isMacOS = process.platform === 'darwin';
 const isDev = !app.isPackaged;
 
-let mainWindow;
-
 function createWindow() {
   // Create browser window
-  mainWindow = new BrowserWindow({
+  const win = new BrowserWindow({
     width: 1200,
-    height: 800,
+    height: 1080,
+    show: false,
     webPreferences: {
-      nodeIntegration: false,
-      worldSafeExecuteJavaScript: true,
-      contextIsolation: true,
+      nodeIntegration: true,
+      enableRemoteModule: true,
     },
   });
 
   // Set load URL
-  const startUrl =
-    process.env.ELECTRON_START_URL ||
-    url.format({
-      pathname: path.join(__dirname, './build/index.html'),
-      protocol: 'file:',
-      slashes: true,
-    });
-  mainWindow.loadURL(startUrl);
+  const startUrl = isDev
+    ? 'http://localhost:3000'
+    : `file://${path.join(__dirname, '../build/index.html')}`;
 
-  // Open dev tools is environment is not production
-  if (isDev) mainWindow.webContents.openDevTools();
+  win.loadURL(startUrl);
+  win.once('ready-to-show', () => {
+    win.show();
+  });
 }
 
 app.on('ready', createWindow);
