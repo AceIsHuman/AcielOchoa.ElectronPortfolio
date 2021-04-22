@@ -1,5 +1,4 @@
-import NameSection from './components/NameSection';
-import CoinSection from './components/CoinSection';
+import QRCodeSection from './components/QRCodeSection';
 import TwitterFeeds from './components/TwitterFeeds';
 import Footer from './components/Footer';
 import ScreenshotButton from './components/ScreenshotButton';
@@ -19,8 +18,7 @@ function App() {
 
   return (
     <Wrapper>
-      <NameSection />
-      <CoinSection />
+      <QRCodeSection />
       <TwitterFeeds />
       <Footer />
       <ScreenshotButton />
