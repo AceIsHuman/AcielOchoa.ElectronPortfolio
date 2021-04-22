@@ -18,11 +18,11 @@ function QRCodeComponent(props) {
   );
 }
 
-
 function createCode(data, canvas, properties) {
   const options = {
     width: properties.size || 100,
     height: properties.size || 100,
+    errorCorrectionLevel: 'H',
   };
   QRCode.toCanvas(canvas, data, options, (err) => {
     if (err) console.error(err);
