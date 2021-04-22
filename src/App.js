@@ -9,7 +9,14 @@ import styled from 'styled-components';
 import palette from './assets/colorScheme';
 import './index.css';
 
+const { ipcRenderer } = window.require('electron');
+
 function App() {
+
+  ipcRenderer.on('alertRenderer', (e, payload) => {
+    alert(payload.message);
+  })
+
   return (
     <Wrapper>
       <NameSection />
