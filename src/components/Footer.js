@@ -22,19 +22,26 @@ function Footer() {
   return (
     <Wrapper>
       {links.map((link) => (
-        <Link key={link.url} url={link.url} text={link.text} color={palette.fontSecondary}/>
+        <Link
+          key={link.url}
+          url={link.url}
+          text={link.text}
+          color={palette.fontSecondary}
+        />
       ))}
     </Wrapper>
   );
 }
 
 const Wrapper = styled.footer`
-  background-color: ${palette.secondary};
-  width: 100%;
-  margin-top: 2rem;
-  padding: 2rem 2.5%;
+  position: absolute;
+  bottom: 0;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-`
+  background-color: ${palette.secondary};
+  width: 100%;
+  padding: 2rem 2.5%;
+  margin-top: 2rem;
+`;
 
 export default Footer;
