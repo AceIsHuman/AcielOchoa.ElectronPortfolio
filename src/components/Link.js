@@ -1,10 +1,21 @@
+import styled from 'styled-components';
+
 function Link(props) {
   const { url, text, ...rest } = props;
   return (
-    <a {...rest} href={url} rel="noreferrer noopener" style={{ color: props.color }}>
+    <Anchor {...rest} href={url} rel="noreferrer noopener">
       {text}
-    </a>
+    </Anchor>
   );
 }
+
+const Anchor = styled.a`
+  color: ${(p) => p.color};
+  transition: 0.5s;
+  &:hover {
+    text-decoration: underline;
+    transform: translate(0, -10%) scale(1.1);
+  } 
+`;
 
 export default Link;
