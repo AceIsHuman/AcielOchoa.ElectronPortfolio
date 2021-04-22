@@ -2,7 +2,7 @@ const { BrowserWindow, dialog } = require('electron');
 const path = require('path');
 const fs = require('fs');
 
-function screenshot() {
+function screenshot(event) {
   const win = BrowserWindow.getFocusedWindow();
   win.webContents.capturePage({ x: 0, y: 0 }).then((img) => {
     dialog
@@ -21,7 +21,10 @@ function screenshot() {
             'base64',
             (err) => {
               if (err) throw err;
-              console.log('Saved!');
+              event.sender.send('alertRenderer', {
+                type: 'success',
+                message: `Screenshot saved!\n${file.filePath.toString()}`,
+              });
             }
           );
         }
