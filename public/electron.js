@@ -69,5 +69,9 @@ ipcMain.on('cmcRequest', (e, endpoint) => {
       // Return data to ipcRenderer
       e.sender.send('cmcResponse', data);
     })
-    .catch((err) => console.error(err.message));
+    .catch((err) => {
+      e.sender.send('alertRenderer', { type: 'error', message: err.message });
+      e.sender.send('cmcResponse', []);
+      console.error(err.message)
+    });
 });
