@@ -38,7 +38,6 @@ const Wrapper = styled.div`
   height: 100vh;
 `;
 
-console.log(palette.primary.replace('#', '%23').toLowerCase());
 /* background by SVGBackgrounds.com */
 
 export default App;
