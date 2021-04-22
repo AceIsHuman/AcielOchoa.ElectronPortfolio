@@ -1,8 +1,6 @@
 import { useState, useEffect } from 'react';
 import CoinCard from './CoinCard';
 
-import styled from 'styled-components';
-
 const { ipcRenderer } = window.require('electron');
 
 function CryptoCurrencySection() {
@@ -23,20 +21,13 @@ function CryptoCurrencySection() {
   }, []);
 
   return (
-    <Wrapper>
+    <>
       {coin.length &&
         coin.map((c) => {
           return <CoinCard key={`coin-card-${c.id}`} coin={c} />;
         })}
-    </Wrapper>
+    </>
   );
 }
-
-const Wrapper = styled.div`
-  padding-top: 2rem;
-  width: 95%;
-  display: flex;
-  justify-content: space-between;
-`;
 
 export default CryptoCurrencySection;
