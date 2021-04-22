@@ -1,9 +1,16 @@
 import styled from 'styled-components';
+const { ipcRenderer } = window.require('electron');
 
 function Link(props) {
   const { url, text, ...rest } = props;
+
   return (
-    <Anchor {...rest} href={url} rel="noreferrer noopener">
+    <Anchor
+      {...rest}
+      href="#"
+      onClick={() => ipcRenderer.send('loadLink', url)}
+      rel="noreferrer noopener"
+    >
       {text}
     </Anchor>
   );
@@ -15,7 +22,7 @@ const Anchor = styled.a`
   &:hover {
     text-decoration: underline;
     transform: translate(0, -10%) scale(1.1);
-  } 
+  }
 `;
 
 export default Link;

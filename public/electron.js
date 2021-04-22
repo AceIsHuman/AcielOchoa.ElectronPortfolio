@@ -1,4 +1,4 @@
-const { app, BrowserWindow, ipcMain } = require('electron');
+const { app, BrowserWindow, ipcMain, shell } = require('electron');
 const path = require('path');
 const screenshot = require('./utils/screenshot');
 const cmcRequest = require('./utils/cmcRequest');
@@ -75,3 +75,7 @@ ipcMain.on('cmcRequest', (e, endpoint) => {
       console.error(err.message)
     });
 });
+
+ipcMain.on('loadLink', (_, link) => {
+  shell.openExternal(link);
+})
