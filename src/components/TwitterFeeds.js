@@ -12,7 +12,7 @@ function TwitterFeeds() {
   useEffect(() => {
     // Calculate width and height of each twitter feed
     const w = (Math.floor(wrapper.current.scrollWidth / 100) * 100) / 2;
-    const h = Math.floor(wrapper.current.scrollHeight / 100) * 100;
+    const h = Math.floor(wrapper.current.scrollHeight / 100) * 100 - 20;
     setWidth(w);
     setHeight(h);
   }, [wrapper]);
@@ -28,7 +28,8 @@ function TwitterFeeds() {
 const Wrapper = styled.section`
   display: flex;
   justify-content: space-around;
-  margin-top: 2rem;
+  align-items: center;
+  padding-bottom: 6rem;
   width: 100%;
   height: 100%;
   maxWidth: 120rem;
