@@ -14,7 +14,7 @@ function CoinCard(props) {
     <div>
       <Name>{fullName}</Name>
       <Price>{price}</Price>
-      <QRCode id={id} data={`${fullName}: ${price}`} />
+      <QRCode id={id} data={`${fullName}: ${price}`} size={80} />
     </div>
   );
 }
@@ -22,11 +22,11 @@ function CoinCard(props) {
 const Name = styled.h3`
   color: ${palette.fontPrimary};
   text-decoration: underline;
-`
+`;
 
 const Price = styled.p`
   color: ${palette.fontSecondary};
   margin-bottom: 0.5rem;
-`
+`;
 
 export default CoinCard;
